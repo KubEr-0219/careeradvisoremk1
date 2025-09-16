@@ -1,0 +1,74 @@
+/* src/pages/RoadmapDetail.css */
+.roadmap-detail {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 20px;
+  text-align: center;
+}
+
+.roadmap-description {
+  margin-bottom: 30px;
+  font-size: 1.1rem;
+  color: #444;
+}
+
+.timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  position: relative;
+}
+
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 35px;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: #ccc;
+}
+
+.timeline-step {
+  display: flex;
+  align-items: flex-start;
+  position: relative;
+}
+
+.timeline-icon {
+  flex-shrink: 0;
+  margin-right: 15px;
+}
+
+.timeline-icon .icon {
+  font-size: 1.5rem;
+  background: #f9f9f9;
+  border-radius: 50%;
+  padding: 10px;
+  border: 2px solid #ddd;
+}
+
+.timeline-content {
+  background: #fff;
+  padding: 15px 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  text-align: left;
+}
+
+.timeline-content h3 {
+  margin: 0;
+  color: #2e7d32;
+  font-size: 1.1rem;
+}
+
+.timeline-content p {
+  margin: 5px 0 0;
+  color: #555;
+}
+
+/* Icon colors */
+.icon.school { color: #1e88e5; }   /* blue */
+.icon.degree { color: #6a1b9a; }   /* purple */
+.icon.career { color: #2e7d32; }   /* green */
+.icon.other  { color: #f57c00; }   /* orange */

@@ -1,0 +1,126 @@
+/* src/pages/Roadmaps.css */
+.roadmaps-container {
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.subtitle {
+  color: #555;
+  margin-bottom: 30px;
+}
+
+.roadmap-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  margin-top: 30px;
+}
+
+.roadmap-link {
+  text-decoration: none;
+}
+
+.roadmap-card {
+  position: relative;
+  padding: 20px;
+  border-radius: 12px;
+  background: white;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.5s ease;
+  text-align: center;
+  overflow: hidden;
+}
+
+.roadmap-card:hover {
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.2);
+  background: linear-gradient(135deg, rgba(255,255,255,1), rgba(245,245,245,0.9));
+}
+
+/* Animated glowing border */
+.roadmap-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 12px;
+  padding: 2px;
+  background: linear-gradient(90deg, #16a34a, #3b82f6, #9333ea, #f59e0b);
+  background-size: 300% 300%;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  animation: borderGlow 5s linear infinite;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.roadmap-card:hover::before {
+  opacity: 1;
+}
+
+@keyframes borderGlow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.icon-box {
+  font-size: 2rem;
+  margin-bottom: 10px;
+  transition: transform 0.3s ease;
+}
+
+/* Category colors */
+.roadmap-card.engineering {
+  background: #dbeafe;
+  color: #1e3a8a;
+}
+
+.roadmap-card.medicine {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.roadmap-card.arts {
+  background: #f3e8ff;
+  color: #581c87;
+}
+
+.roadmap-card.commerce {
+  background: #ffedd5;
+  color: #7c2d12;
+}
+
+.roadmap-card.teaching {
+  background: #e0f2fe;
+  color: #075985;
+}
+
+/* Fade-up animation */
+.fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeUp 0.8s ease-out forwards;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Icon pulse on hover */
+.roadmap-card:hover .icon-box {
+  animation: pulse 0.6s ease-in-out;
+}
+
+@keyframes pulse {
+  0%   { transform: scale(1); }
+  50%  { transform: scale(1.15); }
+  100% { transform: scale(1); }
+}
