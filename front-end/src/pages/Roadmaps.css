@@ -16,10 +16,12 @@
   margin-top: 30px;
 }
 
+/* Remove underline from links */
 .roadmap-link {
   text-decoration: none;
 }
 
+/* Roadmap cards */
 .roadmap-card {
   position: relative;
   padding: 20px;
@@ -29,8 +31,35 @@
   transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.5s ease;
   text-align: center;
   overflow: hidden;
+
+  /* ✅ Equal height fix */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* keep top aligned */
+  align-items: center; /* center horizontally */
+  min-height: 260px; /* ⬅ increased slightly for balance */
 }
 
+/* Make sure text fills space evenly */
+.roadmap-card h3 {
+  margin: 10px 0;
+  font-size: 1.2rem;
+  font-weight: 700;
+  flex-shrink: 0; /* don’t shrink headings */
+}
+
+.roadmap-card p {
+  flex-grow: 1;  /* stretches description to keep cards balanced */
+  display: flex;
+  align-items: center; /* vertically center text */
+  justify-content: center;
+  text-align: center;
+  font-size: 0.95rem;
+  color: #444;
+}
+
+
+/* Hover effects */
 .roadmap-card:hover {
   transform: translateY(-8px) scale(1.03);
   box-shadow: 0 12px 25px rgba(0,0,0,0.2);
@@ -64,10 +93,24 @@
   100% { background-position: 0% 50%; }
 }
 
+/* Icon styles */
 .icon-box {
   font-size: 2rem;
   margin-bottom: 10px;
   transition: transform 0.3s ease;
+}
+
+/* ✅ Text spacing fix */
+.roadmap-card h3 {
+  margin-bottom: 10px;
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.roadmap-card p {
+  flex-grow: 1; /* makes descriptions stretch evenly */
+  font-size: 0.95rem;
+  color: #444;
 }
 
 /* Category colors */

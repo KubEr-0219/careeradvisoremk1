@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import "./Login.css"; // ✅ custom styles
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -10,7 +11,8 @@ function Login() {
   const [isRegister, setIsRegister] = useState(false);
   const navigate = useNavigate();
 
-  const handleSubmit = async () => {
+  const handleSubmit = async (e) => {
+    e.preventDefault();
     try {
       if (isRegister) {
         const res = await axios.post("http://localhost:5000/api/users/register", {
@@ -34,45 +36,68 @@ function Login() {
   };
 
   return (
-    <div style={{ maxWidth: 700, margin: "30px auto", padding: 20 }}>
-      <h2>{isRegister ? "Register" : "Login"}</h2>
+    <div className="login-container">
+      <div className="login-card">
+        
+        {/* ✅ Tab Switcher */}
+        <div className="tab-switcher">
+          <button
+            className={!isRegister ? "active" : ""}
+            onClick={() => setIsRegister(false)}
+          >
+            Login
+          </button>
+          <button
+            className={isRegister ? "active" : ""}
+            onClick={() => setIsRegister(true)}
+          >
+            Register
+          </button>
+        </div>
 
-      {isRegister && (
-        <input
-          placeholder="Name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          style={{ display: "block", marginBottom: 8, padding: 8 }}
-        />
-      )}
+        <h2>{isRegister ? "Create Account ✨" : "Welcome Back 👋"}</h2>
 
-      <input
-        placeholder="Email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-        style={{ display: "block", marginBottom: 8, padding: 8 }}
-      />
-      <input
-        placeholder="Password"
-        type="password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-        style={{ display: "block", marginBottom: 8, padding: 8 }}
-      />
+        <form onSubmit={handleSubmit}>
+          {isRegister && (
+            <div className="input-group">
+              <span className="icon">👤</span>
+              <input
+                type="text"
+                placeholder="Full Name"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                required
+              />
+            </div>
+          )}
 
-      <button onClick={handleSubmit} style={{ padding: 8 }}>
-        {isRegister ? "Register" : "Login"}
-      </button>
+          <div className="input-group">
+            <span className="icon">📧</span>
+            <input
+              type="email"
+              placeholder="Email Address"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+          </div>
 
-      <p style={{ marginTop: 10 }}>
-        {isRegister ? "Already have an account?" : "Need an account?"}{" "}
-        <span
-          style={{ color: "blue", cursor: "pointer" }}
-          onClick={() => setIsRegister(!isRegister)}
-        >
-          {isRegister ? "Login" : "Register"}
-        </span>
-      </p>
+          <div className="input-group">
+            <span className="icon">🔒</span>
+            <input
+              type="password"
+              placeholder="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+          </div>
+
+          <button type="submit" className="login-btn">
+            {isRegister ? "Register" : "Login"}
+          </button>
+        </form>
+      </div>
     </div>
   );
 }

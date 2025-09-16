@@ -1,10 +1,9 @@
-/* src/pages/Home.css */
-
 /* Container */
 .home-container {
   font-family: 'Poppins', sans-serif;
   color: #1a1a1a;
   padding: 20px;
+  background: transparent; /* no forced white */
 }
 
 /* ---------------------- */
@@ -12,57 +11,54 @@
 /* ---------------------- */
 .hero {
   position: relative;
-  min-height: 80vh;
+  min-height: 75vh;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
 
-  /* ✅ Changed to sleek black → gray gradient */
-  background: linear-gradient(135deg, #0f0f0f, #1f1f1f, #3d3d3d);
-  background-size: 300% 300%;
-  animation: gradientShift 8s ease infinite;
-
+  background: transparent; /* ✅ blend into global gradient */
   border-radius: 20px;
   margin: 40px auto;
   max-width: 1100px;
   overflow: hidden;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
 }
 
 /* Floating glass content */
 .hero-content {
   position: relative;
   display: inline-block;
-  background: rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(14px);
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(16px);
   border-radius: 16px;
   padding: 40px 30px;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
   animation: floatUp 1.5s ease forwards;
   z-index: 1;
 }
 
 .hero-title {
-  font-size: 3rem;
+  font-size: 2.8rem;
   font-weight: 800;
   line-height: 1.2;
   margin-bottom: 20px;
+  color: #2e2e2e;
   animation: fadeSlideUp 1s ease forwards;
 }
 
 .hero-subtext {
-  font-size: 1.25rem;
+  font-size: 1.2rem;
   margin-bottom: 30px;
+  color: #555;
   opacity: 0;
   animation: fadeIn 1.5s ease forwards;
   animation-delay: 0.4s;
 }
 
-/* 🚀 Neon glowing button */
+/* 🚀 Softer glowing button */
 .start-btn {
-  background: white;
-  color: #1d4ed8;
+  background: linear-gradient(135deg, #66bb6a, #43a047);
+  color: white;
   border: none;
   padding: 14px 34px;
   font-size: 1.1rem;
@@ -73,14 +69,13 @@
   opacity: 0;
   animation: popIn 0.8s ease forwards;
   animation-delay: 0.8s;
-  box-shadow: 0 0 12px rgba(255, 255, 255, 0.4);
+  box-shadow: 0 6px 16px rgba(67, 160, 71, 0.4);
 }
 
 .start-btn:hover {
-  color: #fff;
-  background: #16a34a;
   transform: scale(1.08);
-  box-shadow: 0 0 15px #16a34a, 0 0 35px #16a34a, 0 0 55px #16a34a;
+  background: linear-gradient(135deg, #81c784, #388e3c);
+  box-shadow: 0 0 18px #43a04766, 0 0 32px #43a04744;
 }
 
 /* ---------------------- */
@@ -96,85 +91,42 @@
 
 /* Base feature card */
 .feature-card {
-  padding: 30px 20px;
+  padding: 28px 20px;
   border-radius: 16px;
   text-align: center;
   color: white;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   opacity: 0;
   cursor: pointer;
-  perspective: 1000px;
 }
 
-/* Category gradients + text colors */
-.feature-card:nth-child(1) { /* Quiz */
-  background: linear-gradient(135deg, #2563eb, #1e40af);
-  color: #f8fafc;
-}
-.feature-card:nth-child(2) { /* Roadmaps */
-  background: linear-gradient(135deg, #9333ea, #6b21a8);
-  color: #faf5ff;
-}
-.feature-card:nth-child(3) { /* Colleges */
-  background: linear-gradient(135deg, #16a34a, #065f46);
-  color: #ecfdf5;
-}
-.feature-card:nth-child(4) { /* Timeline */
-  background: linear-gradient(135deg, #eab308, #ca8a04);
-  color: #fefce8;
-}
+/* Pastel gradient palettes */
+.feature-card:nth-child(1) { background: linear-gradient(135deg, #90caf9, #42a5f5); }
+.feature-card:nth-child(2) { background: linear-gradient(135deg, #ce93d8, #ab47bc); }
+.feature-card:nth-child(3) { background: linear-gradient(135deg, #a5d6a7, #66bb6a); }
+.feature-card:nth-child(4) { background: linear-gradient(135deg, #ffe082, #ffca28); }
 
 /* Hover tilt + glow */
 .feature-card:hover {
-  transform: translateY(-10px) scale(1.05) rotateX(5deg) rotateY(-5deg);
-}
-
-/* Glow by category */
-.feature-card:nth-child(1):hover {
-  box-shadow: 0 0 20px #2563eb, 0 0 40px #2563eb;
-}
-.feature-card:nth-child(2):hover {
-  box-shadow: 0 0 20px #9333ea, 0 0 40px #9333ea;
-}
-.feature-card:nth-child(3):hover {
-  box-shadow: 0 0 20px #16a34a, 0 0 40px #16a34a;
-}
-.feature-card:nth-child(4):hover {
-  box-shadow: 0 0 20px #eab308, 0 0 40px #eab308;
-}
-
-/* ✅ Text glow effect on hover */
-.feature-card:hover h3 {
-  text-shadow: 0 0 8px currentColor, 0 0 16px currentColor;
-}
-.feature-card:hover p {
-  text-shadow: 0 0 6px currentColor;
+  transform: translateY(-10px) scale(1.05);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
 }
 
 /* Headings inside cards */
 .feature-card h3 {
-  font-size: 1.4rem;
+  font-size: 1.3rem;
   margin-bottom: 10px;
   font-weight: 700;
-  color: inherit;
 }
 
 .feature-card p {
   font-size: 1rem;
   opacity: 0.9;
-  color: inherit;
 }
 
 /* ---------------------- */
 /* Animations */
 /* ---------------------- */
-@keyframes gradientShift {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
 @keyframes fadeSlideUp {
   from { opacity: 0; transform: translateY(40px); }
   to { opacity: 1; transform: translateY(0); }
@@ -190,8 +142,9 @@
   to { opacity: 1; transform: scale(1); }
 }
 
-.fade-up {
-  animation: fadeSlideUp 0.8s ease forwards;
+@keyframes floatUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 /* Stagger effect */
@@ -206,27 +159,25 @@
   content: "";
   position: absolute;
   border-radius: 50%;
-  opacity: 0.25;
+  opacity: 0.15;
   z-index: 0;
   animation: float 8s ease-in-out infinite;
 }
 
 .hero::before {
-  width: 220px;
-  height: 220px;
-  background: #ffffff33;
+  width: 180px;
+  height: 180px;
+  background: #90caf922;
   top: -60px;
-  left: -80px;
-  animation-delay: 0s;
+  left: -60px;
 }
 
 .hero::after {
-  width: 300px;
-  height: 300px;
-  background: #00000022;
-  bottom: -100px;
-  right: -120px;
-  animation-delay: 3s;
+  width: 240px;
+  height: 240px;
+  background: #81c78422;
+  bottom: -80px;
+  right: -80px;
 }
 
 @keyframes float {
