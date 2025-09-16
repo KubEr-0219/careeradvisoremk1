@@ -2,12 +2,12 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import "./Quiz.css"; // <-- new css file
+import "./Quiz.css"; // 👈 we'll style it separately
 
 function Quiz() {
   const [questions, setQuestions] = useState([]);
   const [answers, setAnswers] = useState({});
-  const [current, setCurrent] = useState(0);
+  const [step, setStep] = useState(0);
   const [email, setEmail] = useState(localStorage.getItem("userEmail") || "");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
@@ -19,26 +19,20 @@ function Quiz() {
       .catch((err) => console.error(err));
   }, []);
 
-  const handleAnswer = (value) => {
-    const qid = questions[current].id;
-    setAnswers((prev) => ({ ...prev, [qid]: value }));
-
-    // If last question → submit
-    if (current === questions.length - 1) {
-      submit({ ...answers, [qid]: value });
-    } else {
-      // Move to next with animation delay
-      setTimeout(() => setCurrent((prev) => prev + 1), 400);
+  const handleAnswer = (id, value) => {
+    setAnswers((prev) => ({ ...prev, [id]: value }));
+    if (step < questions.length - 1) {
+      setTimeout(() => setStep((prev) => prev + 1), 400); // smooth move to next
     }
   };
 
-  const submit = async (finalAnswers = answers) => {
+  const submit = async () => {
     const token = localStorage.getItem("token");
     setLoading(true);
     try {
       const res = await axios.post(
         "http://localhost:5000/api/quiz/submit",
-        { answers: finalAnswers, userEmail: email || undefined },
+        { answers, userEmail: email || undefined },
         { headers: token ? { Authorization: `Bearer ${token}` } : {} }
       );
 
@@ -57,9 +51,7 @@ function Quiz() {
     }
   };
 
-  if (!questions.length) return <p style={{ textAlign: "center" }}>Loading quiz...</p>;
-
-  const q = questions[current];
+  const progress = ((step + 1) / questions.length) * 100;
 
   return (
     <div className="quiz-container">
@@ -75,31 +67,46 @@ function Quiz() {
         className="quiz-email"
       />
 
-      {/* Progress */}
-      <div className="progress-bar">
+      {/* Progress Bar */}
+      <div className="quiz-progress">
         <div
-          className="progress-fill"
-          style={{ width: `${((current + 1) / questions.length) * 100}%` }}
+          className="quiz-progress-fill"
+          style={{ width: `${progress}%` }}
         ></div>
       </div>
-      <p className="progress-text">
-        Question {current + 1} of {questions.length}
-      </p>
 
-      {/* Question card */}
-      <div key={q.id} className="question-card fade-in">
-        <h3>{q.q}</h3>
-        <div className="answer-buttons">
-          <button onClick={() => handleAnswer("yes")} disabled={loading}>
-            ✅ Yes
-          </button>
-          <button onClick={() => handleAnswer("no")} disabled={loading}>
-            ❌ No
-          </button>
+      {questions.length > 0 && (
+        <div className="quiz-card">
+          <h3 className="quiz-step">
+            Question {step + 1} of {questions.length}
+          </h3>
+          <p className="quiz-question">{questions[step].q}</p>
+          <div className="quiz-options">
+            <button
+              className="btn-yes"
+              onClick={() => handleAnswer(questions[step].id, "yes")}
+            >
+              ✅ Yes
+            </button>
+            <button
+              className="btn-no"
+              onClick={() => handleAnswer(questions[step].id, "no")}
+            >
+              ❌ No
+            </button>
+          </div>
         </div>
-      </div>
+      )}
 
-      {loading && <p className="loading">Submitting...</p>}
+      {step === questions.length - 1 && Object.keys(answers).length === questions.length && (
+        <button
+          className="quiz-submit"
+          disabled={loading}
+          onClick={submit}
+        >
+          {loading ? "Submitting..." : "See My Results 🎯"}
+        </button>
+      )}
     </div>
   );
 }

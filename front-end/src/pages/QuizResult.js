@@ -2,73 +2,70 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
-import { PieChart, Pie, Cell, Tooltip, Legend, ResponsiveContainer } from "recharts";
+import {
+  Radar, RadarChart, PolarGrid, PolarAngleAxis, ResponsiveContainer,
+} from "recharts";
 import "./QuizResult.css";
 
 function QuizResult() {
-  const { id } = useParams(); // from route /quiz-result/:id
-  const navigate = useNavigate();
+  const { id } = useParams();
   const [result, setResult] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
-    const resultId = id || localStorage.getItem("lastQuizResultId");
-    if (!resultId) return;
-
-    axios
-      .get(`http://localhost:5000/api/quiz/result/${resultId}`)
-      .then((res) => setResult(res.data))
-      .catch((err) => console.error(err));
+    const fetchResult = async () => {
+      try {
+        if (id) {
+          const res = await axios.get(`http://localhost:5000/api/quiz/result/${id}`);
+          setResult(res.data);
+        } else {
+          const lastId = localStorage.getItem("lastQuizResultId");
+          if (lastId) {
+            const res = await axios.get(`http://localhost:5000/api/quiz/result/${lastId}`);
+            setResult(res.data);
+          }
+        }
+      } catch (err) {
+        console.error(err);
+      }
+    };
+    fetchResult();
   }, [id]);
 
-  if (!result) {
-    return <p style={{ textAlign: "center", marginTop: "40px" }}>Loading result...</p>;
-  }
+  if (!result) return <p style={{ textAlign: "center", marginTop: "40px" }}>Loading result...</p>;
 
-  // Prepare chart data
-  const chartData = Object.entries(result.scores || {}).map(([k, v]) => ({
-    name: k.charAt(0).toUpperCase() + k.slice(1),
-    value: v,
+  const data = Object.entries(result.scores || {}).map(([key, value]) => ({
+    subject: key.charAt(0).toUpperCase() + key.slice(1),
+    score: value,
   }));
 
-  const COLORS = ["#1d4ed8", "#16a34a", "#9333ea", "#ea580c", "#0ea5e9"];
-
   return (
-    <div className="quiz-result-container fade-in">
-      <h2 className="quiz-result-title">🎯 Your Career Path Suggestion</h2>
-
-      {/* Summary Card */}
-      <div className="result-card">
-        <h3>{result.suggestion}</h3>
-        <p>{result.summary}</p>
+    <div className="result-container">
+      <div className="result-card fade-up">
+        <h2 className="result-title">🎯 Your Career Suggestion</h2>
+        <h3 className="result-suggestion">{result.suggestion}</h3>
+        <p className="result-summary">{result.summary}</p>
       </div>
 
-      {/* Chart */}
-      <div className="chart-section">
-        <h3>Your Scores</h3>
-        <ResponsiveContainer width="100%" height={300}>
-          <PieChart>
-            <Pie
-              data={chartData}
-              dataKey="value"
-              nameKey="name"
-              cx="50%"
-              cy="50%"
-              outerRadius={110}
-              label
-            >
-              {chartData.map((entry, index) => (
-                <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-              ))}
-            </Pie>
-            <Tooltip />
-            <Legend />
-          </PieChart>
+      <div className="chart-container fade-up">
+        <h3>📊 Your Scores</h3>
+        <ResponsiveContainer width="100%" height={350}>
+          <RadarChart cx="50%" cy="50%" outerRadius="80%" data={data}>
+            <PolarGrid />
+            <PolarAngleAxis dataKey="subject" />
+            <Radar
+              name="Score"
+              dataKey="score"
+              stroke="#4caf50"
+              fill="#81c784"
+              fillOpacity={0.6}
+            />
+          </RadarChart>
         </ResponsiveContainer>
       </div>
 
-      {/* Actions */}
-      <button className="retake-btn" onClick={() => navigate("/quiz")}>
-        🔄 Retake Quiz
+      <button className="back-btn" onClick={() => navigate("/roadmaps")}>
+        🌍 Explore Roadmaps
       </button>
     </div>
   );

@@ -186,3 +186,19 @@
     transform: translateX(0);
   }
 }
+/* Remove underline from logo link */
+.navbar-logo {
+  text-decoration: none;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #2e7d32;
+  transition: transform 0.3s ease, color 0.3s ease, text-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+/* Glow + slight scale on hover */
+.navbar-logo:hover {
+  color: #43a047;
+  transform: scale(1.05);
+  text-shadow: 0px 2px 12px rgba(67, 160, 71, 0.5);
+}

@@ -1,6 +1,7 @@
+// src/pages/Home.js
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import "../App.css";
+import "./Home.css";  // ✅ new file for Lusion-style design
 
 function Home() {
   const navigate = useNavigate();
@@ -9,8 +10,10 @@ function Home() {
     <div className="home-container">
       {/* Hero Section */}
       <header className="hero">
-        <h1>Your Personalized Career & Education Advisor</h1>
-        <p>Discover courses, careers, colleges, and timelines tailored just for you.</p>
+        <h1 className="hero-title">Your Personalized Career & Education Advisor</h1>
+        <p className="hero-subtext">
+          Discover courses, careers, colleges, and timelines tailored just for you.
+        </p>
         <button className="start-btn" onClick={() => navigate("/quiz")}>
           🚀 Start Quiz
         </button>
@@ -18,22 +21,34 @@ function Home() {
 
       {/* Feature Cards */}
       <section className="features">
-        <div className="feature-card clickable" onClick={() => navigate("/quiz")}>
+        <div
+          className="feature-card clickable fade-up"
+          onClick={() => navigate("/quiz")}
+        >
           <h3>✅ Take Quiz</h3>
           <p>Get personalized guidance</p>
         </div>
 
-        <div className="feature-card clickable" onClick={() => navigate("/roadmaps")}>
+        <div
+          className="feature-card clickable fade-up"
+          onClick={() => navigate("/roadmaps")}
+        >
           <h3>📍 Roadmaps</h3>
           <p>Visual career path from degree to jobs</p>
         </div>
 
-        <div className="feature-card clickable" onClick={() => navigate("/colleges")}>
+        <div
+          className="feature-card clickable fade-up"
+          onClick={() => navigate("/colleges")}
+        >
           <h3>🏫 Colleges</h3>
           <p>Find nearby government colleges</p>
         </div>
 
-        <div className="feature-card clickable" onClick={() => navigate("/timeline")}>
+        <div
+          className="feature-card clickable fade-up"
+          onClick={() => navigate("/timeline")}
+        >
           <h3>📅 Timeline</h3>
           <p>Track admissions & scholarships</p>
         </div>

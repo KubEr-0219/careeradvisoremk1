@@ -18,8 +18,10 @@ function Navbar() {
   return (
     <nav className={scrolled ? "navbar scrolled" : "navbar"}>
       <div className="navbar-container">
-        {/* Logo */}
-        <div className="navbar-logo">Build Your Way</div>
+        {/* ✅ Logo now links to Home */}
+        <Link to="/" className="navbar-logo" onClick={() => setIsOpen(false)}>
+          Build Your Way
+        </Link>
 
         {/* Hamburger Menu (Mobile) */}
         <div className="menu-icon" onClick={() => setIsOpen(!isOpen)}>
