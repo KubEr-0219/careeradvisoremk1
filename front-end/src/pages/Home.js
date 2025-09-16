@@ -1,7 +1,7 @@
 // src/pages/Home.js
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import "./Home.css";  // ✅ new file for Lusion-style design
+import "./Home.css";  // ✅ custom styles
 
 function Home() {
   const navigate = useNavigate();
@@ -10,13 +10,18 @@ function Home() {
     <div className="home-container">
       {/* Hero Section */}
       <header className="hero">
-        <h1 className="hero-title">Your Personalized Career & Education Advisor</h1>
-        <p className="hero-subtext">
-          Discover courses, careers, colleges, and timelines tailored just for you.
-        </p>
-        <button className="start-btn" onClick={() => navigate("/quiz")}>
-          🚀 Start Quiz
-        </button>
+        {/* ✅ Wrapped content in a glass box */}
+        <div className="hero-content">
+          <h1 className="hero-title">
+            Your Personalized Career & Education Advisor
+          </h1>
+          <p className="hero-subtext">
+            Discover courses, careers, colleges, and timelines tailored just for you.
+          </p>
+          <button className="start-btn" onClick={() => navigate("/quiz")}>
+            🚀 Start Quiz
+          </button>
+        </div>
       </header>
 
       {/* Feature Cards */}
