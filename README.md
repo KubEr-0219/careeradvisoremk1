@@ -57,15 +57,15 @@ Across India, students face:
 
 2. Install dependencies:
 
-   Command:npm install
+       npm install
 
 3. Start backend:
 
-   Command:npm run server
+       npm run server
 
 4. Start frontend:
 
-   Command:npm start
+       npm start
 
 5.Open in browser:
 
