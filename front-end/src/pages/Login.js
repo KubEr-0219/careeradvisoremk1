@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import "./Login.css"; // ✅ custom styles
+import "./Login.css"; // custom styles
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -38,8 +38,7 @@ function Login() {
   return (
     <div className="login-container">
       <div className="login-card">
-        
-        {/* ✅ Tab Switcher */}
+        {/* Tab Switcher */}
         <div className="tab-switcher">
           <button
             className={!isRegister ? "active" : ""}
@@ -63,11 +62,12 @@ function Login() {
               <span className="icon">👤</span>
               <input
                 type="text"
-                placeholder="Full Name"
+                placeholder=" "
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 required
               />
+              <label>Full Name</label>
             </div>
           )}
 
@@ -75,22 +75,24 @@ function Login() {
             <span className="icon">📧</span>
             <input
               type="email"
-              placeholder="Email Address"
+              placeholder=" "
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
             />
+            <label>Email Address</label>
           </div>
 
           <div className="input-group">
             <span className="icon">🔒</span>
             <input
               type="password"
-              placeholder="Password"
+              placeholder=" "
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
             />
+            <label>Password</label>
           </div>
 
           <button type="submit" className="login-btn">

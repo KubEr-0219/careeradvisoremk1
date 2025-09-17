@@ -1,9 +1,17 @@
 const express = require("express");
 const router = express.Router();
-const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const User = require("../models/User");
 const protect = require("../middleware/authMiddleware");
+
+// Generate JWT
+const generateToken = (id, email) => {
+  return jwt.sign(
+    { id, email },
+    process.env.JWT_SECRET || "secretkey",
+    { expiresIn: "7d" }
+  );
+};
 
 // Register a new user
 router.post("/register", async (req, res) => {
@@ -12,14 +20,14 @@ router.post("/register", async (req, res) => {
     let user = await User.findOne({ email });
     if (user) return res.status(400).json({ error: "User already exists" });
 
-    const salt = await bcrypt.genSalt(10);
-    const passwordHash = await bcrypt.hash(password, salt);
-
-    user = new User({ name, email, passwordHash });
+    user = new User({ name, email, password });
     await user.save();
 
-    const token = jwt.sign({ id: user._id, email: user.email }, process.env.JWT_SECRET || "secretkey", { expiresIn: "7d" });
-    res.json({ token, user: { id: user._id, name: user.name, email: user.email } });
+    const token = generateToken(user._id, user.email);
+    res.json({
+      token,
+      user: { id: user._id, name: user.name, email: user.email }
+    });
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
@@ -35,8 +43,11 @@ router.post("/login", async (req, res) => {
     const isMatch = await user.matchPassword(password);
     if (!isMatch) return res.status(400).json({ error: "Invalid credentials" });
 
-    const token = jwt.sign({ id: user._id, email: user.email }, process.env.JWT_SECRET || "secretkey", { expiresIn: "7d" });
-    res.json({ token, user: { id: user._id, name: user.name, email: user.email } });
+    const token = generateToken(user._id, user.email);
+    res.json({
+      token,
+      user: { id: user._id, name: user.name, email: user.email }
+    });
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
@@ -45,7 +56,7 @@ router.post("/login", async (req, res) => {
 // Get profile (protected)
 router.get("/profile", protect, async (req, res) => {
   try {
-    const user = await User.findById(req.user.id).select("-passwordHash");
+    const user = await User.findById(req.user.id).select("-password");
     if (!user) return res.status(404).json({ error: "User not found" });
     res.json(user);
   } catch (err) {

@@ -98,3 +98,30 @@ html::after {
   border-radius: 6px;
   cursor: pointer;
 }
+/* Floating vibrant blobs */
+html::before,
+html::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(140px);
+  opacity: 0.45;
+  z-index: -1;
+  animation: blobFloat 18s ease-in-out infinite alternate;
+}
+
+html::before {
+  width: 500px;
+  height: 500px;
+  background: #43a047; /* vibrant green */
+  top: -150px;
+  left: -180px;
+}
+
+html::after {
+  width: 600px;
+  height: 600px;
+  background: #1e88e5; /* deep blue */
+  bottom: -200px;
+  right: -200px;
+}

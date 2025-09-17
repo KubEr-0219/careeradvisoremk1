@@ -26,7 +26,7 @@ app.use(express.urlencoded({ extended: true })); // parse form data
 app.use(morgan("dev")); // request logging (dev)
 
 // ---------- Import & mount API routes ----------
-// Make sure these files exist in backend/routes/
+// Make sure these files exist in backend/routes/vs
 const quizRoute = require("./routes/quizRoute");
 const usersRoute = require("./routes/usersRoute");
 const roadmapsRoute = require("./routes/roadmapsRoute");
