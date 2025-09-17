@@ -54,3 +54,39 @@ Across India, students face:
    ```bash
    git clone https://github.com/yourusername/build-your-way.git
    cd build-your-way
+
+2. Install dependencies:
+
+   Command:npm install
+
+3. Start backend:
+
+   Command:npm run server
+
+4. Start frontend:
+
+   Command:npm start
+
+5.Open in browser:
+
+    http://localhost:3000
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   
