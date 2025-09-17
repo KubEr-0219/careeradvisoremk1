@@ -4,101 +4,14 @@ html, body, #root {
   padding: 0;
   height: 100%;
   font-family: 'Poppins', sans-serif;
-  background: linear-gradient(135deg, #fdfdfd, #f7f9fb, #eef3f6); /* soft gradient */
+  background: linear-gradient(135deg, #fdfdfd, #f7f9fb, #eef3f6);
   color: #1a1a1a;
   line-height: 1.6;
   position: relative;
   overflow-x: hidden;
 }
 
-/* Floating pastel blobs for background */
-html::before,
-html::after {
-  content: "";
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(100px);
-  opacity: 0.55;  /* brighter visibility */
-  z-index: -1;
-  animation: blobFloat 18s ease-in-out infinite alternate;
-}
-
-html::before {
-  width: 500px;
-  height: 500px;
-  background: #a5d6a7; /* mint green */
-  top: -120px;
-  left: -160px;
-}
-
-html::after {
-  width: 600px;
-  height: 600px;
-  background: #90caf9; /* pastel blue */
-  bottom: -140px;
-  right: -180px;
-}
-
-@keyframes blobFloat {
-  0% { transform: translateY(0) scale(1); }
-  50% { transform: translateY(-40px) scale(1.1); }
-  100% { transform: translateY(0) scale(1); }
-}
-
-/* Remove forced white on containers */
-.home-container,
-.page-container {
-  background: transparent !important;
-}
-
-/* Page Container for all inner pages */
-.page-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 70vh;
-  text-align: center;
-  animation: fadeSlideUp 1s ease-out;
-}
-
-/* Card look for inner pages */
-.page-card {
-  background: white;
-  padding: 40px 30px;
-  border-radius: 12px;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
-  max-width: 500px;
-  width: 90%;
-  animation: popIn 0.8s ease-out;
-}
-
-.page-card h2 {
-  margin-bottom: 15px;
-  color: #2e7d32;
-}
-
-/* Make feature cards look clickable */
-.clickable {
-  cursor: pointer;
-  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
-}
-
-.clickable:hover {
-  transform: translateY(-8px) scale(1.05);
-  box-shadow: 0 14px 35px rgba(0, 0, 0, 0.18);
-  background: linear-gradient(135deg, #f9fafb, #f0fdf4);
-}
-
-/* Buttons inside inner pages */
-.page-card button {
-  padding: 8px 12px;
-  background: #1b5e20;
-  color: white;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-}
-/* Floating vibrant blobs */
+/* Floating pastel blobs */
 html::before,
 html::after {
   content: "";
@@ -113,7 +26,7 @@ html::after {
 html::before {
   width: 500px;
   height: 500px;
-  background: #43a047; /* vibrant green */
+  background: #fdd835; /* yellow blob */
   top: -150px;
   left: -180px;
 }
@@ -121,7 +34,40 @@ html::before {
 html::after {
   width: 600px;
   height: 600px;
-  background: #1e88e5; /* deep blue */
+  background: #42a5f5; /* blue blob */
   bottom: -200px;
   right: -200px;
+}
+
+@keyframes blobFloat {
+  0% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-40px) scale(1.1); }
+  100% { transform: translateY(0) scale(1); }
+}
+
+/* Page Containers */
+.page-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 70vh;
+  text-align: center;
+  animation: fadeSlideUp 1s ease-out;
+}
+
+.page-card {
+  background: white;
+  padding: 40px 30px;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  max-width: 500px;
+  width: 90%;
+  animation: popIn 0.8s ease-out;
+}
+
+.page-card h2 {
+  margin-bottom: 15px;
+  background: linear-gradient(90deg, #fdd835, #42a5f5);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }

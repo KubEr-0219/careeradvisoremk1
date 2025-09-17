@@ -3,12 +3,10 @@
   font-family: 'Poppins', sans-serif;
   color: #1a1a1a;
   padding: 20px;
-  background: transparent; /* no forced white */
+  background: transparent;
 }
 
-/* ---------------------- */
-/* Hero Section */
-/* ---------------------- */
+/* Hero */
 .hero {
   position: relative;
   min-height: 75vh;
@@ -16,18 +14,13 @@
   align-items: center;
   justify-content: center;
   text-align: center;
-
-  background: transparent; /* ✅ blend into global gradient */
   border-radius: 20px;
   margin: 40px auto;
   max-width: 1100px;
   overflow: hidden;
 }
 
-/* Floating glass content */
 .hero-content {
-  position: relative;
-  display: inline-block;
   background: rgba(255, 255, 255, 0.4);
   backdrop-filter: blur(16px);
   border-radius: 16px;
@@ -37,27 +30,28 @@
   z-index: 1;
 }
 
+/* Gradient Title */
 .hero-title {
   font-size: 2.8rem;
   font-weight: 800;
   line-height: 1.2;
   margin-bottom: 20px;
-  color: #2e2e2e;
-  animation: fadeSlideUp 1s ease forwards;
+  background: linear-gradient(90deg, #fdd835, #42a5f5);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .hero-subtext {
   font-size: 1.2rem;
   margin-bottom: 30px;
   color: #555;
-  opacity: 0;
   animation: fadeIn 1.5s ease forwards;
   animation-delay: 0.4s;
 }
 
-/* 🚀 Softer glowing button */
+/* Button */
 .start-btn {
-  background: linear-gradient(135deg, #66bb6a, #43a047);
+  background: linear-gradient(135deg, #fdd835, #42a5f5);
   color: white;
   border: none;
   padding: 14px 34px;
@@ -66,21 +60,18 @@
   border-radius: 12px;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
-  opacity: 0;
   animation: popIn 0.8s ease forwards;
   animation-delay: 0.8s;
-  box-shadow: 0 6px 16px rgba(67, 160, 71, 0.4);
+  box-shadow: 0 6px 16px rgba(66, 165, 245, 0.4);
 }
 
 .start-btn:hover {
   transform: scale(1.08);
-  background: linear-gradient(135deg, #81c784, #388e3c);
-  box-shadow: 0 0 18px #43a04766, 0 0 32px #43a04744;
+  background: linear-gradient(135deg, #ffee58, #1e88e5);
+  box-shadow: 0 0 18px #42a5f577, 0 0 32px #fdd83566;
 }
 
-/* ---------------------- */
-/* Features Section */
-/* ---------------------- */
+/* Features */
 .features {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -89,7 +80,6 @@
   max-width: 1100px;
 }
 
-/* Base feature card */
 .feature-card {
   padding: 28px 20px;
   border-radius: 16px;
@@ -100,19 +90,17 @@
   cursor: pointer;
 }
 
-/* Pastel gradient palettes */
-.feature-card:nth-child(1) { background: linear-gradient(135deg, #90caf9, #42a5f5); }
-.feature-card:nth-child(2) { background: linear-gradient(135deg, #ce93d8, #ab47bc); }
-.feature-card:nth-child(3) { background: linear-gradient(135deg, #a5d6a7, #66bb6a); }
-.feature-card:nth-child(4) { background: linear-gradient(135deg, #ffe082, #ffca28); }
+/* Pastel Cards */
+.feature-card:nth-child(1) { background: linear-gradient(135deg, #90caf9, #42a5f5); } /* blue */
+.feature-card:nth-child(2) { background: linear-gradient(135deg, #fff59d, #fdd835); } /* yellow */
+.feature-card:nth-child(3) { background: linear-gradient(135deg, #b39ddb, #7e57c2); } /* purple */
+.feature-card:nth-child(4) { background: linear-gradient(135deg, #80deea, #26c6da); } /* aqua */
 
-/* Hover tilt + glow */
 .feature-card:hover {
   transform: translateY(-10px) scale(1.05);
   box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
 }
 
-/* Headings inside cards */
 .feature-card h3 {
   font-size: 1.3rem;
   margin-bottom: 10px;
@@ -124,36 +112,13 @@
   opacity: 0.9;
 }
 
-/* ---------------------- */
 /* Animations */
-/* ---------------------- */
-@keyframes fadeSlideUp {
-  from { opacity: 0; transform: translateY(40px); }
-  to { opacity: 1; transform: translateY(0); }
-}
+@keyframes fadeSlideUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes popIn { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
+@keyframes floatUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
 
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-@keyframes popIn {
-  from { opacity: 0; transform: scale(0.9); }
-  to { opacity: 1; transform: scale(1); }
-}
-
-@keyframes floatUp {
-  from { opacity: 0; transform: translateY(40px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-/* Stagger effect */
-.feature-card:nth-child(1) { animation-delay: 0.4s; }
-.feature-card:nth-child(2) { animation-delay: 0.6s; }
-.feature-card:nth-child(3) { animation-delay: 0.8s; }
-.feature-card:nth-child(4) { animation-delay: 1s; }
-
-/* Floating shapes in hero */
+/* Floating shapes */
 .hero::before,
 .hero::after {
   content: "";
@@ -175,7 +140,7 @@
 .hero::after {
   width: 240px;
   height: 240px;
-  background: #81c78422;
+  background: #ffee5822;
   bottom: -80px;
   right: -80px;
 }

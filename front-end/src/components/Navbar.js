@@ -1,6 +1,6 @@
 // src/components/Navbar.js
 import React, { useState, useEffect } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import "./Navbar.css";
 
 function Navbar() {
@@ -13,20 +13,18 @@ function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Auto-close menu + dropdown after clicking a link
-  const handleLinkClick = () => {
-    setIsOpen(false);
-  };
+  // Close menu when clicking a link
+  const handleLinkClick = () => setIsOpen(false);
 
   return (
     <nav className={scrolled ? "navbar scrolled" : "navbar"}>
       <div className="navbar-container">
-        {/* ✅ Logo links to home */}
+        {/* Logo */}
         <NavLink to="/" className="navbar-logo" onClick={handleLinkClick}>
           Build Your Way
         </NavLink>
 
-        {/* Hamburger Menu (Mobile) */}
+        {/* Hamburger menu (mobile) */}
         <div className="menu-icon" onClick={() => setIsOpen(!isOpen)}>
           <div className={isOpen ? "bar open" : "bar"}></div>
           <div className={isOpen ? "bar open" : "bar"}></div>
@@ -35,12 +33,16 @@ function Navbar() {
 
         {/* Links */}
         <ul className={isOpen ? "navbar-links active" : "navbar-links"}>
-          <li><NavLink to="/" onClick={handleLinkClick}>Home</NavLink></li>
-          <li><NavLink to="/quiz" onClick={handleLinkClick}>Quiz</NavLink></li>
+          <li>
+            <NavLink to="/" onClick={handleLinkClick}>Home</NavLink>
+          </li>
+          <li>
+            <NavLink to="/quiz" onClick={handleLinkClick}>Quiz</NavLink>
+          </li>
 
-          {/* ✅ Roadmaps Dropdown */}
+          {/* Roadmaps Dropdown */}
           <li className="dropdown">
-            <span>Roadmaps ▾</span>
+            <NavLink to="/roadmaps" onClick={handleLinkClick}>Roadmaps ▾</NavLink>
             <ul className="dropdown-menu">
               <li><NavLink to="/roadmaps/engineering" onClick={handleLinkClick}>Engineering</NavLink></li>
               <li><NavLink to="/roadmaps/medicine" onClick={handleLinkClick}>Medicine</NavLink></li>
@@ -50,9 +52,9 @@ function Navbar() {
             </ul>
           </li>
 
-          {/* ✅ Colleges Dropdown */}
+          {/* Colleges Dropdown */}
           <li className="dropdown">
-            <span>Colleges ▾</span>
+            <NavLink to="/colleges" onClick={handleLinkClick}>Colleges ▾</NavLink>
             <ul className="dropdown-menu">
               <li><NavLink to="/colleges/govt" onClick={handleLinkClick}>Government Colleges</NavLink></li>
               <li><NavLink to="/colleges/private" onClick={handleLinkClick}>Private Colleges</NavLink></li>
@@ -60,11 +62,13 @@ function Navbar() {
             </ul>
           </li>
 
-          <li><NavLink to="/timeline" onClick={handleLinkClick}>Timeline</NavLink></li>
+          <li>
+            <NavLink to="/timeline" onClick={handleLinkClick}>Timeline</NavLink>
+          </li>
 
-          {/* ✅ Scholarships Dropdown */}
+          {/* Scholarships Dropdown */}
           <li className="dropdown">
-            <span>Scholarships ▾</span>
+            <NavLink to="/scholarships" onClick={handleLinkClick}>Scholarships ▾</NavLink>
             <ul className="dropdown-menu">
               <li><NavLink to="/scholarships/ug" onClick={handleLinkClick}>Undergraduate</NavLink></li>
               <li><NavLink to="/scholarships/pg" onClick={handleLinkClick}>Postgraduate</NavLink></li>
@@ -72,9 +76,9 @@ function Navbar() {
             </ul>
           </li>
 
-          {/* ✅ Resources Dropdown */}
+          {/* Resources Dropdown */}
           <li className="dropdown">
-            <span>Resources ▾</span>
+            <NavLink to="/resources" onClick={handleLinkClick}>Resources ▾</NavLink>
             <ul className="dropdown-menu">
               <li><NavLink to="/resources/books" onClick={handleLinkClick}>E-books</NavLink></li>
               <li><NavLink to="/resources/skills" onClick={handleLinkClick}>Skill Building</NavLink></li>
@@ -82,9 +86,15 @@ function Navbar() {
             </ul>
           </li>
 
-          <li><NavLink to="/chatbot" onClick={handleLinkClick}>Chatbot</NavLink></li>
-          <li><NavLink to="/profile" onClick={handleLinkClick}>Profile</NavLink></li>
-          <li><NavLink to="/login" onClick={handleLinkClick}>Login</NavLink></li>
+          <li>
+            <NavLink to="/chatbot" onClick={handleLinkClick}>Chatbot</NavLink>
+          </li>
+          <li>
+            <NavLink to="/profile" onClick={handleLinkClick}>Profile</NavLink>
+          </li>
+          <li>
+            <NavLink to="/login" onClick={handleLinkClick}>Login</NavLink>
+          </li>
         </ul>
       </div>
     </nav>
