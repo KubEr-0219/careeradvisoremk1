@@ -52,9 +52,7 @@ Across India, students face:
 ## ⚙️ Installation & Setup
 1. Clone this repo:
    ```bash
-   git clone https://github.com/yourusername/build-your-way.git
-   cd build-your-way
-
+   https://github.com/KubEr-0219/careeradvisoremk1.git
 2. Install dependencies:
 
        npm install
