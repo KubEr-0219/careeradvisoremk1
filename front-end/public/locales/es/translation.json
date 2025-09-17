@@ -1,0 +1,39 @@
+{
+  "navbar": {
+    "home": "Inicio",
+    "quiz": "Cuestionario",
+    "roadmaps": "Mapas de Carrera",
+    "engineering": "Ingeniería",
+    "medicine": "Medicina",
+    "arts": "Artes",
+    "commerce": "Comercio",
+    "teaching": "Enseñanza",
+    "colleges": "Universidades",
+    "govt_colleges": "Universidades Públicas",
+    "private_colleges": "Universidades Privadas",
+    "top_ranked": "Mejor Clasificadas",
+    "timeline": "Cronología",
+    "scholarships": "Becas",
+    "undergraduate": "Pregrado",
+    "postgraduate": "Posgrado",
+    "international": "Internacional",
+    "resources": "Recursos",
+    "ebooks": "Libros Electrónicos",
+    "skills": "Desarrollo de Habilidades",
+    "articles": "Artículos",
+    "chatbot": "Chatbot",
+    "profile": "Perfil",
+    "login": "Iniciar sesión"
+  },
+  "home": {
+    "title": "Tu Asesor Personalizado de Carrera y Educación",
+    "subtitle": "Descubre cursos, carreras, universidades y cronogramas adaptados para ti.",
+    "startQuiz": "Comenzar Cuestionario",
+    "cards": {
+      "quiz": { "title": "Hacer el Cuestionario", "text": "Obtén orientación personalizada" },
+      "roadmaps": { "title": "Mapas de Carrera", "text": "Camino visual de la universidad al empleo" },
+      "colleges": { "title": "Universidades", "text": "Encuentra universidades públicas cercanas" },
+      "timeline": { "title": "Cronología", "text": "Sigue admisiones y becas" }
+    }
+  }
+}

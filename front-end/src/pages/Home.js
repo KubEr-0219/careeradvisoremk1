@@ -1,25 +1,26 @@
 // src/pages/Home.js
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import "./Home.css";  // ✅ custom styles
+import { useTranslation } from "react-i18next"; // ✅ i18n hook
+import "./Home.css";
 
 function Home() {
   const navigate = useNavigate();
+  const { t } = useTranslation(); // ✅ translation function
 
   return (
     <div className="home-container">
       {/* Hero Section */}
       <header className="hero">
-        {/* ✅ Wrapped content in a glass box */}
         <div className="hero-content">
           <h1 className="hero-title">
-            Your Personalized Career & Education Advisor
+            {t("home.title")}
           </h1>
           <p className="hero-subtext">
-            Discover courses, careers, colleges, and timelines tailored just for you.
+            {t("home.subtitle")}
           </p>
           <button className="start-btn" onClick={() => navigate("/quiz")}>
-            🚀 Start Quiz
+            🚀 {t("home.startQuiz")}
           </button>
         </div>
       </header>
@@ -30,32 +31,32 @@ function Home() {
           className="feature-card clickable fade-up"
           onClick={() => navigate("/quiz")}
         >
-          <h3>✅ Take Quiz</h3>
-          <p>Get personalized guidance</p>
+          <h3>✅ {t("home.cards.quiz.title")}</h3>
+          <p>{t("home.cards.quiz.text")}</p>
         </div>
 
         <div
           className="feature-card clickable fade-up"
           onClick={() => navigate("/roadmaps")}
         >
-          <h3>📍 Roadmaps</h3>
-          <p>Visual career path from degree to jobs</p>
+          <h3>📍 {t("home.cards.roadmaps.title")}</h3>
+          <p>{t("home.cards.roadmaps.text")}</p>
         </div>
 
         <div
           className="feature-card clickable fade-up"
           onClick={() => navigate("/colleges")}
         >
-          <h3>🏫 Colleges</h3>
-          <p>Find nearby government colleges</p>
+          <h3>🏫 {t("home.cards.colleges.title")}</h3>
+          <p>{t("home.cards.colleges.text")}</p>
         </div>
 
         <div
           className="feature-card clickable fade-up"
           onClick={() => navigate("/timeline")}
         >
-          <h3>📅 Timeline</h3>
-          <p>Track admissions & scholarships</p>
+          <h3>📅 {t("home.cards.timeline.title")}</h3>
+          <p>{t("home.cards.timeline.text")}</p>
         </div>
       </section>
     </div>

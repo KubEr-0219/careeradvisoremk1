@@ -1,0 +1,39 @@
+{
+  "navbar": {
+    "home": "Accueil",
+    "quiz": "Quiz",
+    "roadmaps": "Parcours",
+    "engineering": "Ingénierie",
+    "medicine": "Médecine",
+    "arts": "Arts",
+    "commerce": "Commerce",
+    "teaching": "Enseignement",
+    "colleges": "Universités",
+    "govt_colleges": "Universités Publiques",
+    "private_colleges": "Universités Privées",
+    "top_ranked": "Les Mieux Classées",
+    "timeline": "Chronologie",
+    "scholarships": "Bourses",
+    "undergraduate": "Licence",
+    "postgraduate": "Master",
+    "international": "International",
+    "resources": "Ressources",
+    "ebooks": "Livres Électroniques",
+    "skills": "Développement de Compétences",
+    "articles": "Articles",
+    "chatbot": "Chatbot",
+    "profile": "Profil",
+    "login": "Connexion"
+  },
+  "home": {
+    "title": "Votre Conseiller Personnel de Carrière et d'Éducation",
+    "subtitle": "Découvrez des cours, des carrières, des écoles et des parcours adaptés pour vous.",
+    "startQuiz": "Commencer le Quiz",
+    "cards": {
+      "quiz": { "title": "Faire le Quiz", "text": "Obtenez des conseils personnalisés" },
+      "roadmaps": { "title": "Parcours", "text": "Cheminement visuel de l'université à l'emploi" },
+      "colleges": { "title": "Écoles", "text": "Trouvez des écoles publiques proches" },
+      "timeline": { "title": "Chronologie", "text": "Suivez les admissions et les bourses" }
+    }
+  }
+}

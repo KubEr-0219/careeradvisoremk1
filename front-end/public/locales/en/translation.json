@@ -1,0 +1,39 @@
+{
+  "navbar": {
+    "home": "Home",
+    "quiz": "Quiz",
+    "roadmaps": "Roadmaps",
+    "engineering": "Engineering",
+    "medicine": "Medicine",
+    "arts": "Arts",
+    "commerce": "Commerce",
+    "teaching": "Teaching",
+    "colleges": "Colleges",
+    "govt_colleges": "Government Colleges",
+    "private_colleges": "Private Colleges",
+    "top_ranked": "Top Ranked",
+    "timeline": "Timeline",
+    "scholarships": "Scholarships",
+    "undergraduate": "Undergraduate",
+    "postgraduate": "Postgraduate",
+    "international": "International",
+    "resources": "Resources",
+    "ebooks": "E-books",
+    "skills": "Skill Building",
+    "articles": "Articles",
+    "chatbot": "Chatbot",
+    "profile": "Profile",
+    "login": "Login"
+  },
+  "home": {
+    "title": "Your Personalized Career & Education Advisor",
+    "subtitle": "Discover courses, careers, colleges, and timelines tailored just for you.",
+    "startQuiz": "Start Quiz",
+    "cards": {
+      "quiz": { "title": "Take Quiz", "text": "Get personalized guidance" },
+      "roadmaps": { "title": "Roadmaps", "text": "Visual career path from degree to jobs" },
+      "colleges": { "title": "Colleges", "text": "Find nearby government colleges" },
+      "timeline": { "title": "Timeline", "text": "Track admissions & scholarships" }
+    }
+  }
+}
