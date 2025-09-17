@@ -13,32 +13,28 @@ function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Close menu when clicking a link
+  // Close menu on click (mobile)
   const handleLinkClick = () => setIsOpen(false);
 
   return (
     <nav className={scrolled ? "navbar scrolled" : "navbar"}>
       <div className="navbar-container">
-        {/* Logo */}
+        {/* ✅ Logo links home */}
         <NavLink to="/" className="navbar-logo" onClick={handleLinkClick}>
           Build Your Way
         </NavLink>
 
-        {/* Hamburger menu (mobile) */}
+        {/* ✅ Mobile menu toggle */}
         <div className="menu-icon" onClick={() => setIsOpen(!isOpen)}>
           <div className={isOpen ? "bar open" : "bar"}></div>
           <div className={isOpen ? "bar open" : "bar"}></div>
           <div className={isOpen ? "bar open" : "bar"}></div>
         </div>
 
-        {/* Links */}
+        {/* ✅ Links */}
         <ul className={isOpen ? "navbar-links active" : "navbar-links"}>
-          <li>
-            <NavLink to="/" onClick={handleLinkClick}>Home</NavLink>
-          </li>
-          <li>
-            <NavLink to="/quiz" onClick={handleLinkClick}>Quiz</NavLink>
-          </li>
+          <li><NavLink to="/" onClick={handleLinkClick}>Home</NavLink></li>
+          <li><NavLink to="/quiz" onClick={handleLinkClick}>Quiz</NavLink></li>
 
           {/* Roadmaps Dropdown */}
           <li className="dropdown">
@@ -62,9 +58,7 @@ function Navbar() {
             </ul>
           </li>
 
-          <li>
-            <NavLink to="/timeline" onClick={handleLinkClick}>Timeline</NavLink>
-          </li>
+          <li><NavLink to="/timeline" onClick={handleLinkClick}>Timeline</NavLink></li>
 
           {/* Scholarships Dropdown */}
           <li className="dropdown">
@@ -86,15 +80,9 @@ function Navbar() {
             </ul>
           </li>
 
-          <li>
-            <NavLink to="/chatbot" onClick={handleLinkClick}>Chatbot</NavLink>
-          </li>
-          <li>
-            <NavLink to="/profile" onClick={handleLinkClick}>Profile</NavLink>
-          </li>
-          <li>
-            <NavLink to="/login" onClick={handleLinkClick}>Login</NavLink>
-          </li>
+          <li><NavLink to="/chatbot" onClick={handleLinkClick}>Chatbot</NavLink></li>
+          <li><NavLink to="/profile" onClick={handleLinkClick}>Profile</NavLink></li>
+          <li><NavLink to="/login" onClick={handleLinkClick}>Login</NavLink></li>
         </ul>
       </div>
     </nav>

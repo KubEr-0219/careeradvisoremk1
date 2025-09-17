@@ -72,3 +72,64 @@
 .icon.degree { color: #6a1b9a; }   /* purple */
 .icon.career { color: #2e7d32; }   /* green */
 .icon.other  { color: #f57c00; }   /* orange */
+/* Timeline base */
+.timeline-step {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+  padding: 20px;
+  margin: 15px 0;
+  border-radius: 12px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.timeline-step:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.12);
+}
+
+/* Stage-specific background colors */
+.timeline-step.school {
+  background: linear-gradient(135deg, #90caf9, #42a5f5);
+  color: white;
+}
+
+.timeline-step.degree {
+  background: linear-gradient(135deg, #fff176, #fdd835);
+  color: #333;
+}
+
+.timeline-step.career {
+  background: linear-gradient(135deg, #a5d6a7, #43a047);
+  color: white;
+}
+
+.timeline-step.other {
+  background: linear-gradient(135deg, #e1bee7, #ab47bc);
+  color: white;
+}
+
+/* Icons */
+.timeline-icon .icon {
+  font-size: 2rem;
+  flex-shrink: 0;
+}
+
+.icon.school { color: #0d47a1; }
+.icon.degree { color: #f57f17; }
+.icon.career { color: #1b5e20; }
+.icon.other  { color: #6a1b9a; }
+
+/* Content */
+.timeline-content h3 {
+  margin: 0 0 5px;
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.timeline-content p {
+  margin: 0;
+  font-size: 1rem;
+  opacity: 0.9;
+}

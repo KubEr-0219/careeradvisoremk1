@@ -20,14 +20,16 @@ function RoadmapDetail() {
     return <p style={{ textAlign: "center", marginTop: "50px" }}>Loading roadmap...</p>;
   }
 
-  // Choose an icon based on stage type
-  const getIcon = (stage) => {
-    if (stage.toLowerCase().includes("school")) return <FaBookOpen className="icon school" />;
-    if (stage.toLowerCase().includes("degree") || stage.toLowerCase().includes("college"))
-      return <FaGraduationCap className="icon degree" />;
-    if (stage.toLowerCase().includes("career") || stage.toLowerCase().includes("job"))
-      return <FaBriefcase className="icon career" />;
-    return <FaStar className="icon other" />;
+  // ✅ Safe getIcon with stage-based color classes
+  const getIcon = (stage = "") => {
+    const lower = stage?.toLowerCase?.() || "";
+    if (lower.includes("school"))
+      return <FaBookOpen className="icon school" title="School Stage" />;
+    if (lower.includes("degree") || lower.includes("college"))
+      return <FaGraduationCap className="icon degree" title="Degree Stage" />;
+    if (lower.includes("career") || lower.includes("job"))
+      return <FaBriefcase className="icon career" title="Career Stage" />;
+    return <FaStar className="icon other" title="Other Stage" />;
   };
 
   return (
@@ -36,12 +38,12 @@ function RoadmapDetail() {
       <p className="roadmap-description">{road.description}</p>
 
       <div className="timeline">
-        {road.steps && road.steps.map((step, idx) => (
-          <div key={idx} className="timeline-step">
-            <div className="timeline-icon">{getIcon(step.stage)}</div>
+        {road.steps?.filter(Boolean).map((step, idx) => (
+          <div key={idx} className={`timeline-step ${step?.stage?.toLowerCase?.() || "other"}`}>
+            <div className="timeline-icon">{getIcon(step?.stage)}</div>
             <div className="timeline-content">
-              <h3>{step.stage}</h3>
-              <p>{step.details}</p>
+              <h3>{step?.stage || "Untitled Stage"}</h3>
+              <p>{step?.details || "No details available."}</p>
             </div>
           </div>
         ))}

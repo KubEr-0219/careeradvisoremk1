@@ -1,4 +1,3 @@
-// src/pages/Colleges.js
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./Colleges.css";
@@ -20,7 +19,11 @@ function Colleges() {
 
   return (
     <div className="colleges-container">
+      {/* New styled heading */}
       <h2 className="page-title">🎓 Nearby Government Colleges</h2>
+      <p className="page-subtitle">
+        Search and explore institutions offering quality education
+      </p>
 
       <div className="search-box">
         <input

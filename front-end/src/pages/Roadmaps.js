@@ -1,4 +1,3 @@
-// src/pages/Roadmaps.js
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
@@ -21,7 +20,6 @@ function Roadmaps() {
       .catch((err) => console.error(err));
   }, []);
 
-  // Assign icon + color by category key
   const categoryStyles = {
     engineering: { icon: <FaLaptopCode />, className: "engineering" },
     medicine: { icon: <FaUserMd />, className: "medicine" },
@@ -32,8 +30,9 @@ function Roadmaps() {
 
   return (
     <div className="roadmaps-container">
-      <h2>📍 Career Roadmaps</h2>
-      <p className="subtitle">Explore subject-to-career pathways</p>
+      {/* New styled heading */}
+      <h2 className="page-title">📍 Career Roadmaps</h2>
+      <p className="page-subtitle">Explore subject-to-career pathways</p>
 
       <div className="roadmap-grid">
         {roadmaps.map((r, idx) => {
